@@ -20,15 +20,15 @@ def webServer(port=13331):
     #Establish the connection
     
     print('Ready to serve...')
-    connectionSocket, addr = serverSocket.accept() #Fill in start -are you accepting connections?     #Fill in end
+    connectionSocket, addr = serverSocket.accept() 
     
     try:
-      message = connectionSocket.recv(1024).decode() #Fill in start -a client is sending you a message   #Fill in end 
+      message = connectionSocket.recv(1024).decode() 
       filename = message.split()[1]
       
       #opens the client requested file. 
       #Plenty of guidance online on how to open and read a file in python. How should you read it though if you plan on sending it through a socket?
-      f = open(filename[1:], 'rb')     #fill in start              #fill in end   )
+      f = open(filename[1:], 'rb')   
       
       
 
@@ -64,10 +64,11 @@ def webServer(port=13331):
       # Send response message for invalid request due to the file not being found (404)
       # Remember the format you used in the try: block!
       outputdata = b"HTTP/1.1 404 Not Found\r\n"
-      outputdata += b"Content-Type: text/html; charset=UTF-8\r\n"
       outputdata += b"Server: MyPythonWebServer/1.0\r\n"
+      outputdata += b"Content-Type: text/html; charset=UTF-8\r\n"
       outputdata += b"Connection: close\r\n"
       outputdata += b"\r\n"
+      outputdata += b"<html><body><h1>404 Not Found</h1></body></html>"
       connectionSocket.send(outputdata)
 
       #Close client socket
@@ -80,6 +81,3 @@ def webServer(port=13331):
 
 if __name__ == "__main__":
   webServer(13331)
-
-
-
