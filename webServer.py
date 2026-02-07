@@ -36,8 +36,8 @@ def webServer(port=13331):
       #Fill in start 
               
       #Content-Type is an example on how to send a header as bytes. There are more!
-      outputdata = b"Content-Type: text/html; charset=UTF-8\r\n"
       outputdata = b"HTTP/1.1 200 OK\r\n"
+      outputdata = b"Content-Type: text/html; charset=UTF-8\r\n"
       outputdata += b"Server: MyPythonWebServer/1.0\r\n"
       outputdata += b"Connection: close\r\n"
       outputdata += b"\r\n"
@@ -64,11 +64,10 @@ def webServer(port=13331):
       # Send response message for invalid request due to the file not being found (404)
       # Remember the format you used in the try: block!
       outputdata = b"HTTP/1.1 404 Not Found\r\n"
-      outputdata += b"Server: MyPythonWebServer/1.0\r\n"
       outputdata += b"Content-Type: text/html; charset=UTF-8\r\n"
+      outputdata += b"Server: MyPythonWebServer/1.0\r\n"
       outputdata += b"Connection: close\r\n"
       outputdata += b"\r\n"
-      outputdata += b"<html><body><h1>404 Not Found</h1></body></html>"
       connectionSocket.send(outputdata)
 
       #Close client socket
@@ -81,5 +80,6 @@ def webServer(port=13331):
 
 if __name__ == "__main__":
   webServer(13331)
+
 
 
