@@ -63,7 +63,7 @@ def webServer(port=13331):
     except Exception as e:
       # Send response message for invalid request due to the file not being found (404)
       # Remember the format you used in the try: block!
-      outtputdata = b"HTTP/1.1 404 Not Found\r\n"
+      outputdata = b"HTTP/1.1 404 Not Found\r\n"
       outputdata += b"Server: MyPythonWebServer/1.0\r\n"
       outputdata += b"Content-Type: text/html; charset=UTF-8\r\n"
       outputdata += b"Connection: close\r\n"
@@ -81,4 +81,5 @@ def webServer(port=13331):
 
 if __name__ == "__main__":
   webServer(13331)
+
 
